@@ -1,0 +1,21 @@
+{
+    "name": "alibaba_open/cross",
+    "description": "阿里巴巴1688跨境电商接口",
+    "type": "1",
+    "require": {
+        "php": ">=7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "aliopen\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "charon",
+            "email": "lysily@vip.qq.com"
+        }
+    ],
+    "license": "MIT",
+    "minimum-stability": "dev"
+}
