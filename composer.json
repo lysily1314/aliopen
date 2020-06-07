@@ -7,7 +7,7 @@
     },
     "autoload": {
         "psr-4": {
-            "aliopen\\": "src/"
+            "AliCrossopen\\": "src/"
         }
     },
     "authors": [
