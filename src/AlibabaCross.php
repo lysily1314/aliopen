@@ -4,7 +4,11 @@ namespace AliCrossopen;
 
 use AliCrossopen\core\ContainerBase;
 use AliCrossopen\provider\ProductProvider;
-use AliCrossopen\provider\StoreProvider;
+use AliCrossopen\provider\OrderProvider;
+use AliCrossopen\provider\OtherProvider;
+use AliCrossopen\provider\OverseasProvider;
+use AliCrossopen\provider\AuthProvider;
+//use AliCrossopen\provider\DevelopProvider;
 
 /**
  * Class Application
@@ -12,6 +16,11 @@ use AliCrossopen\provider\StoreProvider;
  * @property \AliCrossopen\functions\order\Order order
  * @property \AliCrossopen\functions\order\Logistics logistics
  * @property \AliCrossopen\functions\order\Refund refund
+ * @property \AliCrossopen\functions\order\Pay pay
+ * @property \AliCrossopen\functions\other\Other other
+ * @property \AliCrossopen\functions\auth\Auth auth
+ * @property \AliCrossopen\functions\develop\Develop develop
+ * @property \AliCrossopen\functions\overseas\Overseas overseas
  */
 class AlibabaCross extends ContainerBase
 {
@@ -29,8 +38,11 @@ class AlibabaCross extends ContainerBase
      * @var array
      */
     protected $provider = [
-        StoreProvider::class,
+	    OrderProvider::class,
         ProductProvider::class,
-        //...其他服务提供者
+	    OtherProvider::class,
+	    OverseasProvider::class,
+	    AuthProvider::class,
+	    //DevelopProvider::class
     ];
 }

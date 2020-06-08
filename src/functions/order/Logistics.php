@@ -3,12 +3,14 @@
 namespace AliCrossopen\functions\order;
 
 use AliCrossopen\core\BaseClient;
-use AliCrossopen\entity\AddressCodeChildParams;
-use AliCrossopen\entity\AddressCodeGetParams;
-use AliCrossopen\entity\AddressCodeParseParams;
-use AliCrossopen\entity\LogisticsInfosParams;
-use AliCrossopen\entity\LogisticsTraceInfoParams;
 
+use AliCrossopen\entity\order\{
+	AddressCodeChildParams,
+	AddressCodeGetParams,
+	AddressCodeParseParams,
+	LogisticsInfosParams,
+	LogisticsTraceInfoParams
+};
 /**
  * 物流模块
  * @package AliCrossopen\functions\order
@@ -36,17 +38,6 @@ class Logistics extends BaseClient
     {
         $this->app->params = $logisticsTraceInfoParams->build();
         $this->url_info    = 'com.alibaba.logistics:alibaba.trade.getLogisticsTraceInfo.buyerView-1';
-        return $this;
-    }
-
-    /**
-     * 物流公司列表-自联物流
-     * @return $this
-     */
-    public function queryLogisticCompanyListOffline()
-    {
-        //此接口无应用参数
-        $this->url_info = 'com.alibaba.logistics:alibaba.logistics.OpQueryLogisticCompanyList.offline-1';
         return $this;
     }
 

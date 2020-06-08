@@ -139,7 +139,7 @@ class BaseClient
      * @param int $dns_timeout
      * @return bool|string
      */
-    public function curlRequest($base_url, $query_data, $method = 'get', $ssl = true, $exe_timeout = 10, $conn_timeout = 10, $dns_timeout = 3600)
+    public static function curlRequest($base_url, $query_data, $method = 'get', $ssl = true, $exe_timeout = 10, $conn_timeout = 10, $dns_timeout = 3600)
     {
         $method = strtolower($method);
         $ch     = curl_init();

@@ -3,134 +3,90 @@
 namespace AliCrossopen\functions\product;
 
 use AliCrossopen\core\BaseClient;
-use AliCrossopen\entity\CpsMediaProductInfoParams;
-use AliCrossopen\entity\GetCategoryByIdParams;
-use AliCrossopen\entity\ListCybUserGroupParams;
-use AliCrossopen\entity\ListCybUserGroupFeedParams;
-use AliCrossopen\entity\ListOverPricedOfferParams;
-use AliCrossopen\entity\ProductFollowParams;
-use AliCrossopen\entity\ProductUnfollowParams;
-use AliCrossopen\entity\QueryOfferDetailActivityParams;
-use AliCrossopen\entity\CrossProductInfoParam;
+use AliCrossopen\entity\product\{
+	CrossProductInfoParam,
+	CrossProductListParam,
+	CrossSyncProductListParams,
+	CrossSyncPushProductResultParams,
+	ProductFollowParams,
+	ProductUnfollowParams
+};
 
 /**
- * 产品模块
+ * 产品模块[铺货相关]
  * @package AliCrossopen\functions\product
  */
 class Product extends BaseClient
 {
-    /**
-     * 关注商品
-     * @param ProductFollowParams $productFollowParams
-     * @return $this
-     */
-    public function productFollow(ProductFollowParams $productFollowParams)
-    {
-        $this->app->params = $productFollowParams->build();
-        $this->url_info    = 'com.alibaba.product:alibaba.product.follow-1';
-        return $this;
-    }
 
-    /**
-     * 解除关注商品
-     * @param ProductUnfollowParams $productUnfollowParams
-     * @return $this
-     */
-    public function productUnfollow(ProductUnfollowParams $productUnfollowParams)
-    {
-        $this->app->params = $productUnfollowParams->build();
-        $this->url_info    = 'com.alibaba.product:alibaba.product.unfollow.crossborder-1';
-        return $this;
-    }
+	/**
+	 * 跨境场景获取商品详情
+	 * @param CrossProductInfoParam $crossProductInfoParam
+	 * @return $this
+	 */
+	public function getCrossProductInfo( CrossProductInfoParam $crossProductInfoParam)
+	{
+		$this->app->params = $crossProductInfoParam->build();
+		$this->url_info    = 'com.alibaba.product:alibaba.cross.productInfo-1';
+		return $this;
+	}
 
-    /**
-     * 获取商品详情
-     * @param CpsMediaProductInfoParams $cpsMediaProductInfoParams
-     * @return $this
-     */
-    public function cpsMediaProductInfo(CpsMediaProductInfoParams $cpsMediaProductInfoParams)
-    {
-        $this->app->params = $cpsMediaProductInfoParams->build();
-        $this->url_info    = 'com.alibaba.product:alibaba.cpsMedia.productInfo-1';
-        return $this;
-    }
+	/**
+	 * 跨境场景下将商品加入铺货列表
+	 * @param CrossSyncProductListParams $crossSyncProductListParams
+	 * @return $this
+	 */
+	public function CrossSyncProductList( CrossSyncProductListParams $crossSyncProductListParams){
+		$this->app->params = $crossSyncProductListParams->build();
+		$this->url_info = 'com.alibaba.product.push:alibaba.cross.syncProductListPushed-1';
+		return $this;
+	}
 
-    /**
-     * 获取营销活动价格等活动信息
-     * @param QueryOfferDetailActivityParams $queryOfferDetailActivityParams
-     * @return $this
-     */
-    public function queryOfferDetailActivity(QueryOfferDetailActivityParams $queryOfferDetailActivityParams)
-    {
-        $this->app->params = $queryOfferDetailActivityParams->build();
-        $this->url_info    = 'com.alibaba.p4p:alibaba.cps.queryOfferDetailActivity-1';
-        return $this;
-    }
+	/**
+	 * 同步铺货结果
+	 * @param CrossSyncPushProductResultParams $crossSyncPushProductResultParams
+	 * @return $this
+	 */
+	public function CrossSyncPushProductResult( CrossSyncPushProductResultParams $crossSyncPushProductResultParams){
+		$this->app->params = $crossSyncPushProductResultParams->build();
+		$this->url_info = 'com.alibaba.product.push:alibaba.product.push.syncPushProductResult-1';
+		return $this;
+	}
 
-    /**
-     * 商品列表搜索接口
-     * @param ListOverPricedOfferParams $listOverPricedOfferParams
-     * @return $this
-     */
-    public function listOverPricedOffer(ListOverPricedOfferParams $listOverPricedOfferParams)
-    {
-        $this->app->params = $listOverPricedOfferParams->build();
-        $this->url_info    = 'com.alibaba.p4p:alibaba.cps.op.searchCybOffers-1';
-        return $this;
-    }
+	/**
+	 * 跨境场景获取商品列表
+	 * @param CrossProductListParam $crossProductListParam
+	 * @return $this
+	 */
+	public function getCrossProductList( CrossProductListParam $crossProductListParam){
+		$this->app->params = $crossProductListParam->build();
+		$this->url_info    = 'com.alibaba.product:alibaba.cross.productList-1';
+		return $this;
+	}
 
-    /**
-     * 读取已选商品列表
-     * @param ListCybUserGroupFeedParams $listCybUserGroupFeedParams
-     * @return $this
-     */
-    public function listCybUserGroupFeed(ListCybUserGroupFeedParams $listCybUserGroupFeedParams)
-    {
-        $this->app->params = $listCybUserGroupFeedParams->build();
-        $this->url_info    = 'com.alibaba.p4p:alibaba.cps.op.listCybUserGroupFeed-1';
-        return $this;
-    }
+	/**
+	 * 关注商品
+	 * @param ProductFollowParams $productFollowParams
+	 * @return $this
+	 */
+	public function productFollow(ProductFollowParams $productFollowParams)
+	{
+		$this->app->params = $productFollowParams->build();
+		$this->url_info    = 'com.alibaba.product:alibaba.product.follow-1';
+		return $this;
+	}
 
-    /**
-     * 获取我的选品库列表
-     * @param ListCybUserGroupParams $listCybUserGroupFeed
-     * @return Product
-     */
-    public function listCybUserGroup(ListCybUserGroupParams $listCybUserGroupFeed)
-    {
-        $this->app->params = $listCybUserGroupFeed->build();
-        $this->url_info    = 'com.alibaba.p4p:alibaba.cps.op.listCybUserGroup-1';
-        return $this;
-    }
+	/**
+	 * 解除关注商品
+	 * @param ProductUnfollowParams $productUnfollowParams
+	 * @return $this
+	 */
+	public function productUnfollow(ProductUnfollowParams $productUnfollowParams)
+	{
+		$this->app->params = $productUnfollowParams->build();
+		$this->url_info    = 'com.alibaba.product:alibaba.product.unfollow.crossborder-1';
+		return $this;
+	}
 
-    /**
-     * 根据类目Id查询类目
-     *
-     * @param GetCategoryByIdParams $getCategoryByIdParams
-     * @return $this
-     */
-    public function getCategoryById(GetCategoryByIdParams $getCategoryByIdParams)
-    {
-        $this->app->params = $getCategoryByIdParams->build();
-        $this->url_info    = 'com.alibaba.product:alibaba.category.get-1';
-        return $this;
-    }
-
-
-    /**
-     * 跨境场景获取商品详情
-     *
-     * @param CrossProductInfoParam $crossProductInfoParam
-     * @return void
-     * @Author HaierSpi haierspi@qq.com
-     * @DateTime 2020-04-13
-     */
-    public function getCrossProductInfo( CrossProductInfoParam $crossProductInfoParam)
-    {
-
-        $this->app->params = $crossProductInfoParam->build();
-        $this->url_info    = 'com.alibaba.product:alibaba.cross.productInfo-1';
-        return $this;
-    }
 
 }
