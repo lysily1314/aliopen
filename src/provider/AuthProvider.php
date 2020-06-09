@@ -9,6 +9,7 @@ use AliCrossopen\interfaces\Provider;
 /**
  * Class OtherProvider
  * @package AliCrossopen\provider
+ * @property \AliCrossopen\functions\auth\Auth auth
  */
 class AuthProvider implements Provider
 {

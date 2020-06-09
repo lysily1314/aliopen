@@ -9,6 +9,7 @@ use AliCrossopen\interfaces\Provider;
 /**
  * Class DevelopProvider
  * @package AliCrossopen\provider
+ * @property \AliCrossopen\functions\develop\Develop develop
  */
 class DevelopProvider implements Provider
 {

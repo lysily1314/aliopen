@@ -8,6 +8,11 @@ use AliCrossopen\core\Container;
 use AliCrossopen\functions\product\Product;
 use AliCrossopen\interfaces\Provider;
 
+/**
+ * Class ProductProvider
+ * @package AliCrossopen\provider
+ * @property \AliCrossopen\functions\product\Product product
+ */
 class ProductProvider implements Provider
 {
     /**

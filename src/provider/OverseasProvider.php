@@ -9,6 +9,7 @@ use AliCrossopen\interfaces\Provider;
 /**
  * Class OverseasProvider
  * @package AliCrossopen\provider
+ * @property \AliCrossopen\functions\overseas\Overseas overseas
  */
 class OverseasProvider implements Provider
 {
