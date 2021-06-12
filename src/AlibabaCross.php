@@ -3,6 +3,15 @@
 namespace AliCrossopen;
 
 use AliCrossopen\core\ContainerBase;
+use AliCrossopen\functions\auth\Auth;
+use AliCrossopen\functions\develop\Develop;
+use AliCrossopen\functions\order\Logistics;
+use AliCrossopen\functions\order\Order;
+use AliCrossopen\functions\order\Pay;
+use AliCrossopen\functions\order\Refund;
+use AliCrossopen\functions\other\Other;
+use AliCrossopen\functions\overseas\Overseas;
+use AliCrossopen\functions\product\Product;
 use AliCrossopen\provider\ProductProvider;
 use AliCrossopen\provider\OrderProvider;
 use AliCrossopen\provider\OtherProvider;
@@ -12,15 +21,15 @@ use AliCrossopen\provider\AuthProvider;
 
 /**
  * Class Application
- * @property \AliCrossopen\functions\product\Product product
- * @property \AliCrossopen\functions\order\Order order
- * @property \AliCrossopen\functions\order\Logistics logistics
- * @property \AliCrossopen\functions\order\Refund refund
- * @property \AliCrossopen\functions\order\Pay pay
- * @property \AliCrossopen\functions\other\Other other
- * @property \AliCrossopen\functions\auth\Auth auth
- * @property \AliCrossopen\functions\develop\Develop develop
- * @property \AliCrossopen\functions\overseas\Overseas overseas
+ * @property Product product
+ * @property Order order
+ * @property Logistics logistics
+ * @property Refund refund
+ * @property Pay pay
+ * @property Other other
+ * @property Auth auth
+ * @property Develop develop
+ * @property Overseas overseas
  */
 class AlibabaCross extends ContainerBase
 {
